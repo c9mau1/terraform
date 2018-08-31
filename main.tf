@@ -2,6 +2,8 @@ variable "subscription_id" {}
 variable "client_id" {}
 variable "client_secret" {}
 variable "tenant_id" {}
+variable "env" {}
+
 
 provider "azurerm" {
         subscription_id = "${var.subscription_id}"
@@ -14,7 +16,7 @@ resource "azurerm_resource_group" "rg" {
         name = "${local.res_group}"
         location = "${local.region}"
         tags = {
-                environment = "${local.tag}"
+                environment = "${var.env}"
         }
 }
 

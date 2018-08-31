@@ -1,5 +1,4 @@
 locals {
-    tag = "Dev"
-    res_group = "${local.tag}-ResGroup"
+    res_group = "${var.env}-ResGroup"
     region = "japaneast"
 }
