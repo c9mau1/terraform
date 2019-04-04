@@ -1,3 +1,13 @@
+terraform {
+  backend "remote" {
+    organization = "test-20190404"
+
+    workspaces {
+      name = "test"
+    }
+  }
+}
+
 provider "azurerm" {
 }
 

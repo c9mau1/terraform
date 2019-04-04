@@ -1,4 +1,4 @@
 locals {
-    res_group = "${var.env}-ResGroup"
+    res_group = "test-ResGroup"
     region = "japaneast"
 }
