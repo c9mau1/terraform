@@ -1,10 +1,6 @@
 terraform {
-  backend "remote" {
-    organization = "test-20190404"
-
-    workspaces {
-      name = "test"
-    }
+  backend "atlas" {
+    name = "test-20190404/test"
   }
 }
 
