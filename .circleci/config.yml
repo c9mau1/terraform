@@ -15,34 +15,34 @@ jobs:
       - checkout
       - initialize
       - run:
-          name: Validate terraform
-          command: terraform validate
+        name: Validate terraform
+        command: terraform validate
       - run:
-          name: Plan terraform
-          command: terraform plan
+        name: Plan terraform
+        command: terraform plan
   deploy:
     executor: default
     steps:
       - checkout
       - initialize
       - run:
-          name: Apply terraform
-          command: terraform apply -auto-approve
+        name: Apply terraform
+        command: terraform apply -auto-approve
 workflows:
   version: 2
   build-and-deploy:
     jobs:
       - build
       - hold:
-          type: approval
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+        type: approval
+        requires:
+          - build
+        filters:
+          branches:
+            only: master
       - deploy:
-          requires:
-            - hold
-          filters:
-            branches:
-              only: master
+        requires:
+          - hold
+        filters:
+          branches:
+            only: master
