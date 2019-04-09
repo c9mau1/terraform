@@ -12,9 +12,6 @@ jobs:
           name: Create credentials
           command: ./create_credential.sh .terraformrc
       - run:
-          name: cat
-          command: cat .terraformrc
-      - run:
           name: Init terraform
           command: terraform init
       - run:
