@@ -6,11 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: chmod
-          command: chmod 744 create_credential.sh
-      - run:
-          name: Create credentials
-          command: ./create_credential.sh .terraformrc
+          name: Create credential
+          command: sh create_credential.sh .terraformrc
       - run:
           name: Init terraform
           command: terraform init
@@ -26,8 +23,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Create credentials
-          command: chmod 744 create_credential.sh && ./create_credential.sh .terraformrc
+          name: Create credential
+          command: sh create_credential.sh .terraformrc
       - run:
           name: Init terraform
           command: terraform init
