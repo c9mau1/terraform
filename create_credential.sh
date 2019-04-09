@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CRE_FILE=$1
+CRE_FILE=${HOME}/$1
 
 echo "create credentials. filename = ${CRE_FILE}"
 
