@@ -39,7 +39,7 @@ workflows:
       - hold:
           type: approval
           requires:
-            - test
+            - build
           filters:
             branches:
               only: master
