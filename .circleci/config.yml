@@ -6,11 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: list dir
-          command: pwd;ls -l
+          name: chmod
+          command: chmod 744 create_credential.sh
+      - run:
+          name: ls
+          command: ls -la
       - run:
           name: Create credentials
-          command: chmod 744 create_credential.sh && ./create_credential.sh .terraformrc
+          command: ./create_credential.sh .terraformrc
       - run:
           name: Init terraform
           command: terraform init
