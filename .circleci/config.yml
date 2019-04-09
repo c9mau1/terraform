@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: list dir
+          command: pwd;ls -l
+      - run:
           name: Create credentials
           command: chmod 744 create_credential.sh && ./create_credential.sh .terraformrc
       - run:
