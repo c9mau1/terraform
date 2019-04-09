@@ -6,12 +6,8 @@ executors:
 commands:
   initialize:
     steps:
-      - run:
-        name: Create credential
-        command: sh .circleci/create_credential.sh .terraformrc
-      - run:
-          name: Init terraform
-          command: terraform init
+      - run: sh .circleci/create_credential.sh .terraformrc
+      - run: terraform init
 jobs:
   build:
     executor: default
