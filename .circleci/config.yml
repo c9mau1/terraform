@@ -33,9 +33,9 @@ jobs:
           command: terraform apply -auto-approve
 workflows:
   version: 2
-  test-and-deploy:
+  build-and-deploy:
     jobs:
-      - test
+      - build
       - hold:
           type: approval
           requires:
