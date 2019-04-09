@@ -1,23 +1,16 @@
-version: 2.1
-executors:
-  default:
+version: 2
+jobs:
+  build:
     docker:
       - image: hashicorp/terraform:light
-commands:
-  initialize:
     steps:
+      - checkout
       - run:
-        name: Create credential
-        command: sh .circleci/create_credential.sh .terraformrc
+          name: Create credential
+          command: sh .circleci/create_credential.sh .terraformrc
       - run:
           name: Init terraform
           command: terraform init
-jobs:
-  build:
-    executor: default
-    steps:
-      - checkout
-      - initialize
       - run:
           name: Validate terraform
           command: terraform validate
@@ -25,10 +18,16 @@ jobs:
           name: Plan terraform
           command: terraform plan
   deploy:
-    executor: default
+    docker:
+      - image: hashicorp/terraform:light
     steps:
       - checkout
-      - initialize
+      - run:
+          name: Create credential
+          command: sh .circleci/create_credential.sh .terraformrc
+      - run:
+          name: Init terraform
+          command: terraform init
       - run:
           name: Apply terraform
           command: terraform apply -auto-approve
